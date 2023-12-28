@@ -11,7 +11,7 @@ function Dropdown({ items }) {
   );
 
   return (
-    <div className="absolute bg-slate-800 top-[30px] right-2 shadow-2xl z-30 p-2 px-4">
+    <div className="absolute bg-slate-800 top-[37px] right-[-9px] shadow-2xl z-30 p-2 px-4 before:content-['_'] before:h-[20px] before:w-[20px] before:absolute before:top-[-10px] before:right-5 before:bg-slate-800 before:rotate-45 rounded">
       {items.map((item, index) => (
         <div
           key={index}
