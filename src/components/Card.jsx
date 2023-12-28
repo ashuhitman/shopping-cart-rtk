@@ -7,8 +7,8 @@ function Card({ item, setShowCheckOut }) {
   const items = useSelector((state) => state.items);
   const show = items.find((i) => i.id === item.id);
   return (
-    <div className="shadow-md  md:w-[220px] rounded-md hover:shadow-lg flex flex-col">
-      <div className="h-[150px] md:h-[200px]">
+    <div className="shadow-md  md:w-[190px] rounded-md hover:shadow-lg flex flex-col">
+      <div className="h-[150px] ">
         <img src={item.imgUrl} className="h-full w-full rounded-t-md" />
       </div>
       <div className="p-2 flex-1">
@@ -16,9 +16,9 @@ function Card({ item, setShowCheckOut }) {
         <p>{item.name}</p>
         <b>Rs. {item.price}</b>
       </div>
-      <div className="p-2 flex justify-end items-end">
+      <div className="p-2">
         <button
-          className="bg-pink-400 pb-1 px-2 rounded text-white hover:shadow-md font-bold"
+          className="bg-pink-400 s px-2 py-2 w-full rounded text-white hover:shadow-md font-bold"
           onClick={() =>
             show ? setShowCheckOut(true) : dispatch(addToCart(item))
           }
