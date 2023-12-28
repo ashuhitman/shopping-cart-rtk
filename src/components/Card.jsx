@@ -1,10 +1,13 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/Cart/cartActions";
 
 function Card({ item }) {
+  const dispatch = useDispatch();
   return (
-    <div className="shadow-md w-[220px] rounded-md">
+    <div className="shadow-md w-[220px] rounded-md hover:shadow-lg">
       <div className="h-[200px] ">
-        <img src={item.imgUrl} className="h-full w-full rounded-md" />
+        <img src={item.imgUrl} className="h-full w-full rounded-t-md" />
       </div>
       <div className="p-2">
         <b>{item.company}</b>
@@ -12,7 +15,10 @@ function Card({ item }) {
         <b>Rs. {item.price}</b>
       </div>
       <div className="p-2 flex justify-end">
-        <button className="bg-pink-400 py-1 px-2 rounded text-white">
+        <button
+          className="bg-pink-400 pb-1 px-2 rounded text-white hover:shadow-md font-bold"
+          onClick={() => dispatch(addToCart(item))}
+        >
           Add to Bag
         </button>
       </div>
