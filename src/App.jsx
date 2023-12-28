@@ -40,10 +40,12 @@ function App() {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <Header />
-          <main className="p-6 flex gap-4">
-            {items.map((item, index) => (
-              <Card item={item} key={index} />
-            ))}
+          <main className="">
+            <div className="p-6 flex flex-wrap gap-4 m-auto">
+              {items.map((item, index) => (
+                <Card item={item} key={index} />
+              ))}
+            </div>
           </main>
         </PersistGate>
       </Provider>

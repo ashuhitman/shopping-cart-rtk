@@ -5,7 +5,7 @@ import { addToCart } from "../redux/Cart/cartActions";
 function Card({ item }) {
   const dispatch = useDispatch();
   return (
-    <div className="shadow-md w-[220px] rounded-md hover:shadow-lg">
+    <div className="shadow-md m-auto md:m-2 md:w-[220px] rounded-md hover:shadow-lg w-[80%]">
       <div className="h-[200px] ">
         <img src={item.imgUrl} className="h-full w-full rounded-t-md" />
       </div>
