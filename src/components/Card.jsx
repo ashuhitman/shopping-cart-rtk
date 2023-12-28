@@ -1,9 +1,11 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/Cart/cartActions";
 
-function Card({ item }) {
+function Card({ item, setShowCheckOut }) {
   const dispatch = useDispatch();
+  const items = useSelector((state) => state.items);
+  const show = items.find((i) => i.id === item.id);
   return (
     <div className="shadow-md  md:w-[220px] rounded-md hover:shadow-lg flex flex-col">
       <div className="h-[150px] md:h-[200px]">
@@ -17,9 +19,11 @@ function Card({ item }) {
       <div className="p-2 flex justify-end items-end">
         <button
           className="bg-pink-400 pb-1 px-2 rounded text-white hover:shadow-md font-bold"
-          onClick={() => dispatch(addToCart(item))}
+          onClick={() =>
+            show ? setShowCheckOut(true) : dispatch(addToCart(item))
+          }
         >
-          Add to Bag
+          {show ? "Go To Cart" : "Add to Bag"}
         </button>
       </div>
     </div>

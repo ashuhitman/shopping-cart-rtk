@@ -4,19 +4,24 @@ import ShoppingCartIcon from "./ShoppingCartIcon";
 import { useSelector } from "react-redux";
 import Dropdown from "./Dropdown";
 
-function Header() {
-  const { count, items } = useSelector((state) => ({
-    count: state.count,
-    items: state.items,
-  }));
+function Header({ setShowCheckOut }) {
+  const items = useSelector((state) => state.items);
   return (
     <header className="bg-pink-500 text-white shadow-md ">
       <nav className="flex justify-between items-center py-2 md:px-6 px-3">
         <ul>
-          <li>Home</li>
+          <li
+            className="cursor-pointer px-3 hover:pl-4 hover:pr-2 transition-all"
+            onClick={() => {
+              console.log("clicked home");
+              setShowCheckOut(false);
+            }}
+          >
+            Home
+          </li>
         </ul>
         <ul>
-          <li>
+          <li onClick={() => setShowCheckOut(true)}>
             <ShoppingCartIcon items={items} />
           </li>
         </ul>

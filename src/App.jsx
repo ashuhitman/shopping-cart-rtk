@@ -6,6 +6,8 @@ import { Provider, useDispatch } from "react-redux";
 
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "./redux/store";
+import { useState } from "react";
+import Checkout from "./components/Checkout";
 
 const items = [
   {
@@ -35,17 +37,26 @@ const items = [
 ];
 
 function App() {
+  const [showCheckOut, setShowCheckOut] = useState(false);
   return (
     <>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <Header />
+          <Header setShowCheckOut={setShowCheckOut} />
           <main className="">
-            <div className="p-3 md:p-4 md:flex md:flex-wrap md:gap-4 gap-3 grid grid-cols-2">
-              {items.map((item, index) => (
-                <Card item={item} key={index} />
-              ))}
-            </div>
+            {!showCheckOut ? (
+              <div className="p-3 md:p-4 md:flex md:flex-wrap md:gap-4 gap-3 grid grid-cols-2">
+                {items.map((item, index) => (
+                  <Card
+                    item={item}
+                    key={index}
+                    setShowCheckOut={setShowCheckOut}
+                  />
+                ))}
+              </div>
+            ) : (
+              <Checkout setShowCheckOut={setShowCheckOut} />
+            )}
           </main>
         </PersistGate>
       </Provider>
