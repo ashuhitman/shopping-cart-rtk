@@ -2,6 +2,7 @@ import {
   ADD_TO_CART,
   DECREASE_ITEM_FROM_CART,
   REMOVE_FROM_CART,
+  RESET_CART,
 } from "./cartTypes";
 
 const intialState = {
@@ -10,6 +11,8 @@ const intialState = {
 };
 export const cartReducer = (state = intialState, action) => {
   switch (action.type) {
+    case RESET_CART:
+      return intialState;
     case ADD_TO_CART:
       const newItem = action.payload;
       const existingItem = state.items.find((item) => item.id === newItem.id);

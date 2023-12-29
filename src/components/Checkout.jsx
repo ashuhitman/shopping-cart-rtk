@@ -26,7 +26,7 @@ function Checkout({ setShowCheckOut }) {
         {items.map((item, index) => (
           <div
             key={index}
-            className="flex justify-start gap-6 shadow-md relative border-1 border-gray-400 mb-2"
+            className="flex justify-start gap-6 relative border-[1px] border-black-400 mb-2 hover:shadow-md"
           >
             <MdCancel
               size={20}
@@ -46,7 +46,7 @@ function Checkout({ setShowCheckOut }) {
           </div>
         ))}
       </div>
-      <div className="shadow-lg p-4 h-fit border-1 border-gray-400 md:max-w-[400px]">
+      <div className=" p-4 h-fit border-[1px] border-black-400 md:max-w-[400px]">
         {items.map((item, index) => (
           <div
             key={index}

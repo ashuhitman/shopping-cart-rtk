@@ -9,7 +9,7 @@ function Card({ item, setShowCheckOut }) {
   return (
     <div className="shadow-md  md:w-[190px] rounded-md hover:shadow-lg flex flex-col">
       <div className="h-[150px] ">
-        <img src={item.image} className="h-full w-full rounded-t-md" />
+        <img src={item.image} className="h-full w-full rounded-t-md " />
       </div>
       <div className="p-2 flex-1 text-sm">
         <b>{item.title}</b>
