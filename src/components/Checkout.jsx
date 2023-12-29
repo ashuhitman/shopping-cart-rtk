@@ -50,6 +50,7 @@ function Checkout({ setShowCheckOut }) {
           >
             <MdCancel
               size={20}
+              color="red"
               className="absolute top-1 right-1 cursor-pointer z-50"
               onClick={() => dispatch(removeFromCart(item.id))}
             />
@@ -66,7 +67,7 @@ function Checkout({ setShowCheckOut }) {
           </div>
         ))}
       </div>
-      <div className=" p-4 h-fit border-[1px] border-black-400 md:max-w-[400px]">
+      <div className=" p-4 h-fit border-[1px] border-black-400 md:max-w-[400px] md:sticky md:top-0">
         {items.map((item, index) => (
           <div
             key={index}
