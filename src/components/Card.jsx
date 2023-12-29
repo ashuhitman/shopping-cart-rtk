@@ -11,7 +11,7 @@ function Card({ item, setShowCheckOut }) {
       <div className="h-[150px] ">
         <img src={item.image} className="h-full w-full rounded-t-md" />
       </div>
-      <div className="p-2 flex-1">
+      <div className="p-2 flex-1 text-sm">
         <b>{item.title}</b>
         <p>{item.category}</p>
         <b>Rs. {Math.round(item.price * 82.89 * 100) / 100}</b>

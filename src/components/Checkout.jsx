@@ -46,7 +46,7 @@ function Checkout({ setShowCheckOut }) {
           </div>
         ))}
       </div>
-      <div className="shadow-lg p-4 h-fit border-1 border-gray-400">
+      <div className="shadow-lg p-4 h-fit border-1 border-gray-400 md:max-w-[400px]">
         {items.map((item, index) => (
           <div
             key={index}
@@ -72,7 +72,9 @@ function Checkout({ setShowCheckOut }) {
             <div className=" col-span-1"> Rs. {item.price}</div>
           </div>
         ))}
-        <div className="flex justify-end py-4">Total: Rs. {totalPrice}</div>
+        <div className="flex justify-end py-4">
+          Total: Rs. {Math.round(totalPrice * 100) / 100}
+        </div>
         <button className="bg-pink-500 w-full py-2 px-2 mt-4 text-white">
           PLACE ORDER
         </button>
