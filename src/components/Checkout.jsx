@@ -20,7 +20,7 @@ function Checkout({ setShowCheckOut }) {
   useEffect(() => {
     if (items.length > 0) {
       const calculatedTotalPrice = items.reduce(
-        (acc, item) => acc + item.price * item.quantity * 82.89,
+        (acc, item) => acc + item.price * item.quantity,
         0
       );
       setTotalPrice(Math.round(calculatedTotalPrice * 100) / 100);
@@ -62,7 +62,7 @@ function Checkout({ setShowCheckOut }) {
                 <b>{item.title}</b>
               </div>
               <div>{item.category}</div>
-              <div>Rs. {Math.round(item.price * 82.89 * 100) / 100}</div>
+              <div>Rs. {Math.round(item.price * 100) / 100}</div>
             </div>
           </div>
         ))}

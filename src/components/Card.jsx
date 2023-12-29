@@ -14,7 +14,7 @@ function Card({ item, setShowCheckOut }) {
       <div className="p-2 flex-1 text-sm">
         <b>{item.title}</b>
         <p>{item.category}</p>
-        <b>Rs. {Math.round(item.price * 82.89 * 100) / 100}</b>
+        <b>Rs. {Math.round(item.price * 100) / 100}</b>
       </div>
       <div className="p-2">
         <button
