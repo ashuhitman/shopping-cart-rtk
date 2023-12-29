@@ -1,25 +1,45 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MdCancel } from "react-icons/md";
 import {
   addToCart,
   decreaseFromCart,
   removeFromCart,
+  resetCart,
 } from "../redux/Cart/cartActions";
 import CircularComponnet from "./CircularComponnet";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 
 function Checkout({ setShowCheckOut }) {
+  const [orderPlaced, setOrderPlaced] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(0);
   const items = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
   // Calculate the total price
-  const totalPrice = items.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
+
   useEffect(() => {
-    if (items.length === 0) setShowCheckOut(false);
+    if (items.length > 0) {
+      const calculatedTotalPrice = items.reduce(
+        (acc, item) => acc + item.price * item.quantity * 82.89,
+        0
+      );
+      setTotalPrice(Math.round(calculatedTotalPrice * 100) / 100);
+    }
+    if (items.length === 0 && !orderPlaced) setShowCheckOut(false);
   }, [items]);
+  if (orderPlaced) {
+    return (
+      <div className=" w-[90%] md:w-[300px] mx-auto border-[1px] border-black-400 m-4 p-4">
+        <div>Item placed of worth Rs. {totalPrice}</div>
+        <button
+          className="bg-pink-500 w-full py-2 px-2 mt-4 text-white"
+          onClick={() => setShowCheckOut(false)}
+        >
+          Go To HomePage
+        </button>
+      </div>
+    );
+  }
   return (
     <div className="flex flex-col md:flex-row justify-center m-4 md:gap-4">
       <div className="w-full md:w-[50%]">
@@ -30,7 +50,7 @@ function Checkout({ setShowCheckOut }) {
           >
             <MdCancel
               size={20}
-              className="absolute top-2 right-2 cursor-pointer"
+              className="absolute top-1 right-1 cursor-pointer z-50"
               onClick={() => dispatch(removeFromCart(item.id))}
             />
             <div className="h-[100px] w-[90px]">
@@ -75,7 +95,13 @@ function Checkout({ setShowCheckOut }) {
         <div className="flex justify-end py-4">
           Total: Rs. {Math.round(totalPrice * 100) / 100}
         </div>
-        <button className="bg-pink-500 w-full py-2 px-2 mt-4 text-white">
+        <button
+          className="bg-pink-500 w-full py-2 px-2 mt-4 text-white"
+          onClick={() => {
+            setOrderPlaced(true);
+            dispatch(resetCart());
+          }}
+        >
           PLACE ORDER
         </button>
       </div>
