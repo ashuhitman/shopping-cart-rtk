@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../redux/Cart/cartActions";
+import { addToCart } from "../features/cart/cartSlice";
 
 function Card({ item, setShowCheckOut }) {
   const dispatch = useDispatch();

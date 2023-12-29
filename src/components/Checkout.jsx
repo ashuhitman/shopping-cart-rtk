@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MdCancel } from "react-icons/md";
+
+import CircularComponnet from "./CircularComponnet";
+import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import {
   addToCart,
   decreaseFromCart,
   removeFromCart,
-  resetCart,
-} from "../redux/Cart/cartActions";
-import CircularComponnet from "./CircularComponnet";
-import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
+} from "../features/cart/cartSlice";
 
 function Checkout({ setShowCheckOut }) {
   const [orderPlaced, setOrderPlaced] = useState(false);

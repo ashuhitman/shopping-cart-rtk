@@ -11,36 +11,43 @@ import {
   fetchRequest,
   fetchSuccess,
 } from "./redux/shop/shopActions";
+import { fetchItems } from "./features/shop/shopSlice";
 
 function App() {
   const [showCheckOut, setShowCheckOut] = useState(false);
   const dispatch = useDispatch();
-  const { loading, items } = useSelector((state) => ({
+  const { loading, items, error } = useSelector((state) => ({
     loading: state.shop.loading,
     items: state.shop.shopItems,
+    error: state.shop.error,
   }));
 
   useEffect(() => {
-    if (items.length == 0) {
-      fetchItems();
-    }
+    // if (items.length == 0) {
+    //   fetchItems();
+    // }
+    console.log("renderinng app...");
+    dispatch(fetchItems());
   }, []);
-  const fetchItems = async () => {
-    console.log("fetching....");
-    dispatch(fetchRequest);
-    try {
-      const result = await axios.get(
-        "https://fakestoreapi.com/products?limit=10"
-      );
+  // const fetchItems = async () => {
+  //   console.log("fetching....");
+  //   // generate two random numbers having difference of 10 below 100
+  //   // const number1 = Math.floor(Math.random() * 90);
+  //   // const number2 = number1 + 10;
+  //   dispatch(fetchRequest);
+  //   try {
+  //     const result = await axios.get(
+  //       "https://fakestoreapi.com/products?limit=10"
+  //     );
 
-      if (result) {
-        const data = result.data;
-        dispatch(fetchSuccess(data));
-      }
-    } catch (error) {
-      dispatch(fetchFailure());
-    }
-  };
+  //     if (result) {
+  //       const data = result.data;
+  //       dispatch(fetchSuccess(data));
+  //     }
+  //   } catch (error) {
+  //     dispatch(fetchFailure());
+  //   }
+  // };
   if (loading) return <p>Loading...</p>;
   return (
     <>
