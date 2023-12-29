@@ -4,17 +4,17 @@ import { addToCart } from "../redux/Cart/cartActions";
 
 function Card({ item, setShowCheckOut }) {
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.items);
+  const items = useSelector((state) => state.cart.items);
   const show = items.find((i) => i.id === item.id);
   return (
     <div className="shadow-md  md:w-[190px] rounded-md hover:shadow-lg flex flex-col">
       <div className="h-[150px] ">
-        <img src={item.imgUrl} className="h-full w-full rounded-t-md" />
+        <img src={item.image} className="h-full w-full rounded-t-md" />
       </div>
       <div className="p-2 flex-1">
-        <b>{item.company}</b>
-        <p>{item.name}</p>
-        <b>Rs. {item.price}</b>
+        <b>{item.title}</b>
+        <p>{item.category}</p>
+        <b>Rs. {Math.round(item.price * 82.89 * 100) / 100}</b>
       </div>
       <div className="p-2">
         <button

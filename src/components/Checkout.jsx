@@ -10,7 +10,7 @@ import CircularComponnet from "./CircularComponnet";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 
 function Checkout({ setShowCheckOut }) {
-  const items = useSelector((state) => state.items);
+  const items = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
   // Calculate the total price
   const totalPrice = items.reduce(
@@ -34,14 +34,14 @@ function Checkout({ setShowCheckOut }) {
               onClick={() => dispatch(removeFromCart(item.id))}
             />
             <div className="h-[100px] w-[90px]">
-              <img src={item.imgUrl} className="h-full w-full" />
+              <img src={item.image} className="h-full w-full" />
             </div>
             <div>
               <div>
-                <b>{item.company}</b>
+                <b>{item.title}</b>
               </div>
-              <div>{item.name}</div>
-              <div>Rs. {item.price}</div>
+              <div>{item.category}</div>
+              <div>Rs. {Math.round(item.price * 82.89 * 100) / 100}</div>
             </div>
           </div>
         ))}
@@ -68,7 +68,7 @@ function Checkout({ setShowCheckOut }) {
                 onClick={() => dispatch(addToCart(item))}
               />
             </div>
-            <div className=" col-span-3">{item.name}</div>{" "}
+            <div className=" col-span-3">{item.title}</div>{" "}
             <div className=" col-span-1"> Rs. {item.price}</div>
           </div>
         ))}

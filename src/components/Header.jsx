@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import Dropdown from "./Dropdown";
 
 function Header({ setShowCheckOut }) {
-  const items = useSelector((state) => state.items);
+  const items = useSelector((state) => state.cart.items);
   return (
     <header className="bg-pink-500 text-white shadow-md ">
       <nav className="flex justify-between items-center py-2 md:px-6 px-3">

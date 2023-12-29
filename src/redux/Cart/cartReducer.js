@@ -6,6 +6,7 @@ import {
 
 const intialState = {
   items: [],
+  loading: false,
 };
 export const cartReducer = (state = intialState, action) => {
   switch (action.type) {
