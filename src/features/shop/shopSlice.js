@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { getRandomItems } from "../../utils/utils";
 
 const initialState = {
   shopItems: [],
@@ -9,9 +10,9 @@ const initialState = {
 
 export const fetchItems = createAsyncThunk("shop/fetchItems", () => {
   return axios
-    .get("https://fakestoreapi.com/products?limit=10")
+    .get("https://fakestoreapi.com/products?limit=30")
     .then((response) => {
-      return response.data;
+      return getRandomItems(response.data, 10);
     });
 });
 const shopSlice = createSlice({
