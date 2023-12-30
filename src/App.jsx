@@ -16,11 +16,8 @@ import { fetchItems } from "./features/shop/shopSlice";
 function App() {
   const [showCheckOut, setShowCheckOut] = useState(false);
   const dispatch = useDispatch();
-  const { loading, items, error } = useSelector((state) => ({
-    loading: state.shop.loading,
-    items: state.shop.shopItems,
-    error: state.shop.error,
-  }));
+  const loading = useSelector((state) => state.shop.loading);
+  const items = useSelector((state) => state.shop.shopItems);
 
   useEffect(() => {
     // if (items.length == 0) {
