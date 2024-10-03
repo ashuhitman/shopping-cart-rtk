@@ -7,3 +7,4 @@ This shopping cart app is a fully functional web application designed to provide
 - Redux Toolkit
 
 <img src="screenshots/1.pnng" >
+<img src="screenshots/2.pnng" >
