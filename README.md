@@ -6,5 +6,5 @@ This shopping cart app is a fully functional web application designed to provide
 - Taiwlind css
 - Redux Toolkit
 
-<img src="screenshots/1.pnng" >
-<img src="screenshots/2.pnng" >
+<img src="screenshots/1.png" >
+<img src="screenshots/2.png" >
