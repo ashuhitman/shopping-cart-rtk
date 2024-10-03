@@ -5,7 +5,7 @@ This shopping cart app is a fully functional web application designed to provide
 
 ## Tech Stack
 - React
-- Taiwlind css
+- Tailwlind css
 - Redux Toolkit
 
 <img src="screenshots/1.png" >
